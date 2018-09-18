@@ -1,20 +1,34 @@
 import * as React from 'react';
 import './styling/app.css';
-import Hello from './components/helloWorld'
+import { hello_world2 } from './components/hello_world2'
+import { SimpleFormExample, FormData } from "./components/SimpleForm"
 
-class App extends React.Component {
 
-  public render() {
+
+class App extends React.Component<{}, {sForm:FormData, sHello:{hello:string}}> {
+  constructor(props:any, context:any){
+    super(props, context)
+    this.state = {
+      sForm:{ name: "",
+          email: "",
+        is_human: false },
+      sHello:{hello:""}
+    }
+  }
+  render() {
+  
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Get busy with Widgets for React</h1>
-        </header>
-          <Hello />
-      
+      <div>
+        {
+          hello_world2(this.state.sHello.hello).run(x => console.log("HelloWorld: ", x) || this.setState({...this.state, sHello:{...this.state.sHello, hello:x}}))
+        }
+        {
+          SimpleFormExample(this.state.sForm).run(x => console.log("SimpleForm: ", x) || this.setState({...this.state, sForm:x}))
+        }
+
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

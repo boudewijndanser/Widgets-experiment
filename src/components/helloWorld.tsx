@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 import { stateful, div, label, string } from 'widgets-for-react'
 
 let hello_world =
@@ -25,4 +25,4 @@ let hello_world =
     }
   }
   
-  export default Hello;
+  export default Hello
